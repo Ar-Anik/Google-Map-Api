@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Map</title>
+    <style>
+      #container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      #map {
+        height: 80vh;
+        width: 80vw;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1 id="info"></h1>
+      <div id="map"></div>
+    </div>
+
+    <script>
+      function initMap() {
+        let mapOptions = {
+          center: { lat: 23.685, lng: 90.3563 },
+          zoom: 16,
+          // mapTypeId: "terrain",
+          // mapTypeId: "satellite",
+        };
+
+        let map = new google.maps.Map(
+          document.getElementById("map"),
+          mapOptions
+        );
+
+        map.setMapTypeId("satellite");
+        map.setTilt(45);
+        map.setHeading(0);
+
+        document.getElementById("info").innerHTML = map.getTilt();
+      }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCg5n7fU_TD6nnnwM_khpSme8AcaFSsBaU&callback=initMap&v=weekly"></script>
+  </body>
+</html>
